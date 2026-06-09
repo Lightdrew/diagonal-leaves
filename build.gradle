@@ -4,3 +4,17 @@ plugins {
     // see https://projects.neoforged.net/neoforged/moddevgradle for new versions
     id 'net.neoforged.moddev' version '0.1.110' apply false
 }
+
+subprojects {
+    tasks.withType(ProcessResources).configureEach {
+        def expandProps = project.properties.findAll {key,value ->
+            value instanceof String || value instanceof Boolean || value instanceof Integer
+        }
+
+        filesMatching(["*.mixins.json", "fabric.mod.json", "META-INF/neoforge.mods.toml", "pack.mcmeta"]) {
+            expand expandProps
+        }
+
+        inputs.properties(expandProps)
+    }
+}
