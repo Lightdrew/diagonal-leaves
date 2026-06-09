@@ -3,7 +3,6 @@ package net.drew.diagonal_leaves.mixin;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.drew.diagonal_leaves.util.ModUtils;
@@ -16,7 +15,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(LeavesBlock.class)
 public class LeavesBlockMixin extends BlockBehaviourMixin
 {
-
     @Inject(
             method = "updateDistance(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;",
             at = @At("HEAD"),
@@ -49,11 +47,11 @@ public class LeavesBlockMixin extends BlockBehaviourMixin
 
     @Override
     protected void mixin$onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving, CallbackInfo ci) {
-        ModUtils.updateBlocksDiagonally((Block)(Object)this, newState, state, pos, level);
+        ModUtils.updateBlocksDiagonally(newState, pos, level);
     }
 
     @Override
     protected void mixin$onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving, CallbackInfo ci) {
-        ModUtils.updateBlocksDiagonally((Block)(Object)this, oldState, state, pos, level);
+        ModUtils.updateBlocksDiagonally(oldState, pos, level);
     }
 }

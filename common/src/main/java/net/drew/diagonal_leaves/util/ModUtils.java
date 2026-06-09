@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class ModUtils {
-    public static void updateBlocksDiagonally(Block block, BlockState state, BlockState newState, BlockPos pos, Level level)
+    public static void updateBlocksDiagonally(BlockState state, BlockPos pos, Level level)
     {
         BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
 
