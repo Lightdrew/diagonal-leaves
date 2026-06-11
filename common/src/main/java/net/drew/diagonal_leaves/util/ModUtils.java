@@ -3,7 +3,6 @@ package net.drew.diagonal_leaves.util;
 import net.drew.diagonal_leaves.mixin.accesswidener.ILeavesBlockAW;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -23,7 +22,7 @@ public class ModUtils {
 
             if (!(neighbour.getBlock() instanceof LeavesBlock leaves)) continue;
 
-            BlockState updatedState = ((ILeavesBlockAW)leaves).invokeUpdateShape(
+            ((ILeavesBlockAW)leaves).invokeUpdateShape(
                     neighbour,
                     null,
                     state,
@@ -31,10 +30,6 @@ public class ModUtils {
                     mutablePos,
                     pos
             );
-
-            if (updatedState == neighbour) continue;
-
-            level.setBlock(mutablePos, updatedState, Block.UPDATE_ALL);
         }
     }
 }

@@ -12,5 +12,4 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 public interface ILeavesBlockAW {
     @Invoker("updateShape")
     BlockState invokeUpdateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos);
-
 }
