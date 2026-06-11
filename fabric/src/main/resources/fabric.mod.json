@@ -14,7 +14,7 @@
     "icon": "${mod_id}.png",
     "environment": "*",
     "entrypoints": {
-        "main": [
+        "server": [
             "net.drew.diagonal_leaves.Main"
         ]
     },
