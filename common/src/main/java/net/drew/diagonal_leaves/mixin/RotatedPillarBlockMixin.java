@@ -1,6 +1,7 @@
 package net.drew.diagonal_leaves.mixin;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.RotatedPillarBlock;
@@ -13,8 +14,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class RotatedPillarBlockMixin extends BlockBehaviourMixin
 {
     @Override
-    protected void mixin$onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving, CallbackInfo ci) {
-        if(state.is(BlockTags.LOGS)) ModUtils.updateBlocksDiagonally(newState, pos, level);
+    protected void mixin$affectNeighborsAfterRemoval(BlockState state, ServerLevel level, BlockPos pos, boolean movedByPiston, CallbackInfo ci) {
+        ModUtils.updateBlocksDiagonally(state, pos, level);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package net.drew.diagonal_leaves.mixin;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.LeavesBlock;
@@ -46,8 +47,8 @@ public class LeavesBlockMixin extends BlockBehaviourMixin
     }
 
     @Override
-    protected void mixin$onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving, CallbackInfo ci) {
-        ModUtils.updateBlocksDiagonally(newState, pos, level);
+    protected void mixin$affectNeighborsAfterRemoval(BlockState state, ServerLevel level, BlockPos pos, boolean movedByPiston, CallbackInfo ci) {
+        ModUtils.updateBlocksDiagonally(state, pos, level);
     }
 
     @Override

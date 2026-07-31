@@ -3,6 +3,7 @@ package net.drew.diagonal_leaves.util;
 import net.drew.diagonal_leaves.mixin.accesswidener.ILeavesBlockAW;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -24,11 +25,13 @@ public class ModUtils {
 
             ((ILeavesBlockAW)leaves).invokeUpdateShape(
                     neighbour,
-                    null,
-                    state,
+                    level,
                     level,
                     mutablePos,
-                    pos
+                    null,
+                    pos,
+                    state,
+                    level.getRandom()
             );
         }
     }
