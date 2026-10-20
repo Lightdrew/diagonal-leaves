@@ -1,0 +1,18 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "net.drew.diagonal_leaves.mixin",
+    "refmap": "${id}.refmap.json",
+    "compatibilityLevel": "${java}",
+    "mixins": [
+        "BlockBehaviourMixin",
+        "LeavesBlockMixin",
+        "RotatedPillarBlockMixin",
+        "accesswidener.ILeavesBlockAW"
+    ],
+    "client": [],
+    "server": [],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}

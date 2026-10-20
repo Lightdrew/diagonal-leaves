@@ -1,4 +1,4 @@
-license = "CC0-1.0"
+license = "${license}"
 
 modLoader="javafml"
 loaderVersion="[1,)"
@@ -7,19 +7,18 @@ loaderVersion="[1,)"
 modId = "${id}"
 displayName = "${name}"
 version = "${version}"
-authors = "Me!"
-description = "This is an example description! Tell everyone what your mod is about!"
-
-logoFile = "assets/template/icon.png"
-#displayURL = "..."
-#issueTrackerUrl = "..."
+authors = "${authors}"
+description = "${description}"
+logoFile = "icon.png"
+iconFile = "icon.png"
+issueTrackerURL = "${issues}"
 
 [[mixins]]
-config = "template.mixins.json"
+config = "${id}.mixins.json"
 
 [[dependencies.${id}]]
 modId = "minecraft"
 type = "required"
 versionRange = "${minecraft}"
 ordering = "NONE"
-side = "BOTH"
+side = "SERVER"

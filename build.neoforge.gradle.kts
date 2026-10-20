@@ -75,13 +75,19 @@ tasks {
             register("id", sc.properties["mod.id"])
             register("name", sc.properties["mod.name"])
             register("version", sc.properties["mod.version"])
+            register("authors", sc.properties["mod.authors"])
+            register("license", sc.properties["mod.license"])
+            register("source", sc.properties["mod.source"])
+            register("issues", sc.properties["mod.issues"])
+            register("description", sc.properties["mod.description"])
             register("minecraft", sc.properties["mod.mc_compat"])
+            register("loader", Regex("\\d+\\.\\d+").find(sc.properties.get<String>("deps.fabric_loader"))!!.value)
+            register("java", "JAVA_${requiredJava.majorVersion}")
         }
 
         filesMatching("META-INF/neoforge.mods.toml") { expand(props) }
 
-        val mixinJava = "JAVA_${requiredJava.majorVersion}"
-        filesMatching("*.mixins.json") { expand("java" to mixinJava) }
+        filesMatching("*.mixins.json") { expand(props) }
 
         exclude("fabric.mod.json", "*.ct", "*.classtweaker")
     }
